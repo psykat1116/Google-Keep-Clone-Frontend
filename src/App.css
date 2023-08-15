@@ -1,38 +1,463 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: url(../public/bg2.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #000;
+  backdrop-filter: blur(15px);
+}
+
+h2 {
+  padding: 5px;
+}
+
+.btn {
+  display: flex;
+}
+
+.btn button {
+  position: relative;
+  padding: 8px 0px;
+  margin: 0px 20px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  background: transparent;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  font-weight: bolder;
+}
+
+.btn button::after {
+  position: absolute;
+  content: "";
+  height: 2px;
+  width: 100%;
+  background-color: #000;
+  left: -100%;
+  bottom: 5px;
+  transition: all 0.3s linear;
+}
+
+.btn button:hover::after {
+  left: 0px;
+}
+
+.part {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
+  position: relative;
+  width: 30%;
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.left form,
+.popup form {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 5px;
+  width: 100%;
+  min-height: 60vh;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  color: #232323;
+}
+
+.popup form {
+  width: 30%;
+  background-color: #fff;
+}
+
+.left h2 {
+  width: 100%;
+  border-bottom: 2px solid #232323;
+}
+
+#inputtitle,
+#inputdescription {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 10px 0;
+}
+
+:is(#inputtitle, #inputdescription) label {
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+#inputtitle input {
+  padding: 10px;
+  font-size: 1em;
+  border: 2px solid #232323;
+  outline: none;
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+#inputdescription textarea {
+  height: 200px;
+  padding: 10px;
+  font-size: 1em;
+  border: 2px solid #232323;
+  outline: none;
+  background-color: transparent;
+  resize: none;
+  border-radius: 5px;
+}
+
+.left button,
+.popup button {
+  width: 100%;
+  padding: 8px 0;
+  font-size: 16px;
+  border: none;
+  background: #232323;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.box {
+  height: calc(100vh - 90px);
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px);
+  width: 70%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 15px 0;
+  margin-right: 10px;
+  border-radius: 7px;
+}
+
+.box h1 {
+  padding: 10px 0;
+  width: 100%;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.right {
+  width: 100%;
+  padding: 15px 55px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 400px);
+  grid-template-rows: repeat(1fr, auto);
+  gap: 20px;
+  overflow-y: scroll;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.note {
+  height: 250px;
+  min-height: 250px;
+  padding: 8px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  border-radius: 5px;
+  border: 2px solid #232323;
+}
+
+.note h3 {
+  width: 100%;
+  border-bottom: 2px solid #232323;
+}
+
+.note p {
+  margin-top: 5px;
+  width: 100%;
+  height: 140px;
+  overflow-y: scroll;
+}
+
+.note p#timestamp {
+  height: 30px;
+  text-align: right;
+  overflow-y: auto;
+  margin-top: 8px;
+}
+
+.note .functions {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.note .functions button {
+  width: 50%;
+  padding: 5px;
+  font-size: 16px;
+  margin: 0px 5px;
+  border: none;
+  color: #fff;
+  outline: none;
+  background-color: #232323;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+#logout,
+#signup,
+#login {
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#logout .container {
+  background-color: red;
+  height: 35vh;
+  max-width: 350px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(15px);
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#logout .container input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  padding: 3px;
+  border-bottom: 2px solid #232323;
+}
+
+#logout .container button {
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+  background: #232323;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+
+#signup .container,
+#login .container {
+  background-color: red;
+  height: 75vh;
+  max-width: 400px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  justify-content: space-around;
+  align-items: flex-start;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(15px);
+  border-radius: 7px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+#login .container {
+  height: 50vh;
+}
+
+:where(#name, #email, #password, #cpassword) {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+:where(#name, #email, #password, #cpassword) label {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+#signup .container h2,
+#login .container h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 100%;
+}
+
+#login .container h2 {
+  font-size: 2rem;
+}
+
+#signup .container input,
+#login .container input {
+  width: 100%;
+  padding: 10px 0px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #232323;
+  background-color: transparent;
+}
+
+#signup .container button,
+#login .container button {
+  width: 100%;
+  padding: 5px;
+  font-size: 18px;
+  border: none;
+  background: #232323;
+  color: #fff;
+}
+
+#signup .container p,
+#login .container p {
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+}
+
+#intro {
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#maincontent {
+  width: 80vw;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(15px);
+  color: #fff;
+  padding: 15px;
+  border-radius: 7px;
+}
+
+#maincontent section {
+  margin-top: 10px;
+  text-align: right;
+  width: 100%;
+}
+
+.footer {
+  font-size: 1.1rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(15px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 5px 0;
+  font-weight: bold;
+}
+
+.footer .social {
+  margin: 4px 10px;
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+#error{
+  position: relative;
+  height: calc(100vh - 117px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.errormsg{
+  width: 500px;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color:rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  padding: 10px;
+  border-radius: 7px;
+  color: #fff;
+}
+
+.errormsg h1{
+  font-size: 10rem;
+}
+
+.errormsg p{
+  text-align: center;
+}
+
+.popup {
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  height: 100vh;
+  top: -80px;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#timestamp {
+  font-size: 14px;
+  padding-right: 5px;
+}
+
+small{
+  color: red;
+}
+
+button {
+  cursor: pointer;
+}
+
+::placeholder {
+  color: #232323;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+.right::-webkit-scrollbar,
+.note p::-webkit-scrollbar {
+  width: 10px;
+}
+
+.right::-webkit-scrollbar-thumb,
+.note p::-webkit-scrollbar-thumb {
+  background-color: #232323;
 }

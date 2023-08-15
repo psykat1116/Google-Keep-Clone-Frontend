@@ -1,0 +1,33 @@
+import React, { useContext, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import Note from './Note'
+import NoteContext from '../Context/noteContext';
+
+const Notes = () => {
+  const context = useContext(NoteContext);
+  const { notes, fetchNotes } = context;
+  const Navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      fetchNotes();
+    }
+    else {
+      Navigate("/login");
+    }
+    //eslint-disable-next-line
+  }, [])
+
+  return (
+    <div className="box">
+      <h1>Your notes</h1>
+      <div className='right'>
+        {notes.map((note) => {
+          return <Note key={note._id} note={note} />;
+        })}
+      </div>
+    </div>
+  )
+}
+
+export default Notes
