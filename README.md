@@ -6,10 +6,18 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `Initialize Project`
+
+Create a new directory name frontend alongside where backend folder is created then open your terminal and navigate into the frontend folder and run the command "npm install".
+
+Then all the necessary file will be initialized. To run the project see the next part "npm start".
+
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+** You Must Confirm That The Backend Part is running. If Not Then go through the "Google-Keep-Clone-Backend" Repos readme file **
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
