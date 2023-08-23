@@ -4,16 +4,22 @@ import NoteContext from '../Context/noteContext';
 
 const Navbar = () => {
     const context = useContext(NoteContext);
-    const { login } = context;
+    const { login, setLogin } = context;
+
+    function handleLogout() {
+        setLogin(false);
+        localStorage.removeItem("token");
+    }
+
     return (
         <>
             <div id='nav'>
-                <Link to="/" style={{ "textDecoration": "none", "color": "#000" }}><h1>Google Keep</h1></Link>
+                <Link to="/"><h1>Google Keep</h1></Link>
                 <div className="btn">
                     {login ?
                         <>
                             <Link to='/mynotes'><button>My Notes</button></Link>
-                            <Link to='/logout'><button>Logout</button></Link>
+                            <Link to='/login' onClick={handleLogout}><button>Logout</button></Link>
                         </>
                         :
                         <>

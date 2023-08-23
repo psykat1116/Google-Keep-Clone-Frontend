@@ -9,7 +9,7 @@ const Note = (props) => {
     const { deleteNote } = context;
     const [popup, setpopup] = useState(false);
 
-    const updateState = (val)=>{
+    const updateState = (val) => {
         setpopup(val);
     }
 
@@ -26,17 +26,19 @@ const Note = (props) => {
     return (
         <>
             <div className='note'>
-                <h3>{props.note.title}</h3>
+                <div className="head">
+                    <h3>{props.note.title}</h3>
+                    <div className="functions">
+                        <button onClick={handleUpdate}><EditIcon /></button>
+                        <button onClick={handleDelete}><DeleteIcon /></button>
+                    </div>
+                </div>
                 <p>{props.note.description}</p>
                 <p id='timestamp'>{props.note.date}</p>
-                <div className="functions">
-                    <button onClick={handleUpdate}><EditIcon /></button>
-                    <button onClick={handleDelete}><DeleteIcon /></button>
-                </div>
             </div>
             {popup &&
                 <div className="popup">
-                    <Updatebox note={props.note} onUpdate={updateState}/>
+                    <Updatebox note={props.note} onUpdate={updateState} />
                 </div>
             }
         </>

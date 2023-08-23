@@ -8,6 +8,7 @@ const Noteform = () => {
 
   function handleClick(e) {
     e.preventDefault();
+    if(note.title.length )
     addNote(note.title, note.description);
     setNote({
       title: "",

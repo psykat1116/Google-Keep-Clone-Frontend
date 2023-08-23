@@ -11,6 +11,7 @@ const Login = () => {
     email: "",
     password: "",
   })
+  const [errormsg, seterrormsg] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,10 +27,12 @@ const Login = () => {
     if (json.success) {
       setLogin(true);
       localStorage.setItem('token', json.authToken);
-      Navigate('/');
+      Navigate('/mynotes');
     }
     else {
-      alert("You Always Go Home");
+      if(json.errors[0].path === "email"){
+        seterrormsg("**Enter a valid email")
+      }
     }
   }
 
@@ -44,6 +47,7 @@ const Login = () => {
         <div id="email">
           <label>Email</label>
           <input type='email' name="email" placeholder='Enter Your Email' autoFocus value={data.email} onChange={handleChange} required />
+          <small>{errormsg}</small>
         </div>
         <div id="password">
           <label>Password</label>

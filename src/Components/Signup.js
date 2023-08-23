@@ -1,9 +1,10 @@
-import React, { useState, useContext } from 'react'
 import '../App.css';
+import React, { useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import NoteContext from '../Context/noteContext';
 
 const Signup = () => {
+  const [emsg, setemsg] = useState("");
   const [data, setdata] = useState({
     name: "",
     email: "",
@@ -11,10 +12,9 @@ const Signup = () => {
     cpassword: ""
   })
   const context = useContext(NoteContext);
-  const { setLogin } = context;
-
   const Navigate = useNavigate();
-  const { name, email, password, cpassword } = data;
+  const { setLogin } = context;
+  const { name, email, password } = data;
 
   function handleChange(e) {
     setdata({ ...data, [e.target.name]: e.target.value });
@@ -23,9 +23,6 @@ const Signup = () => {
   async function handleClick(e) {
     e.preventDefault();
     const url = `http://localhost:5000/api/auth/signup`;
-    if (password !== cpassword) {
-      return;
-    }
     const response = await fetch(url, {
       method: 'POST',
       headers: {
@@ -37,10 +34,10 @@ const Signup = () => {
     if (json.success) {
       setLogin(true);
       localStorage.setItem('token', json.authToken);
-      Navigate('/');
+      Navigate('/mynotes');
     }
     else {
-      alert("Rom Rom Bhaiyo,System Phar Denge");
+      setemsg("**Enter a valid email");
     }
   }
 
@@ -56,11 +53,12 @@ const Signup = () => {
         <div id="email">
           <label>Email</label>
           <input type='email' name="email" placeholder='Enter Your Email' onChange={handleChange} required />
+          <small>{emsg}</small>
         </div>
         <div id="password">
           <label>Password</label>
           <input type='password' name='password' placeholder='Enter Your Password' onChange={handleChange} required />
-          <small>{data.password.length >= 6 ? "" : "**password should be of atleast 6 characters"}</small>
+          <small>{data.password.length >= 8 ? "" : "**password should be of atleast 8 characters"}</small>
         </div>
         <div id="cpassword">
           <label>Confirm Password</label>
@@ -68,7 +66,7 @@ const Signup = () => {
           <small>{data.cpassword === data.password ? "" : "**password and confirm password does not match"}</small>
         </div>
         <p>Already Have an account ? <Link to='/login'>Login</Link></p>
-        <button type='submit' onClickCapture={handleClick} disabled={data.name.length < 3 || data.password.length < 6 || data.cpassword !== data.password}>Sign In</button>
+        <button type='submit' onClickCapture={handleClick} disabled={data.name.length < 3 || data.password.length < 8 || data.cpassword !== data.password}>Sign In</button>
       </div>
     </div>
   )

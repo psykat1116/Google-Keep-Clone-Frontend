@@ -20,7 +20,7 @@ const Notes = () => {
 
   return (
     <div className="box">
-      <h1>Your notes</h1>
+      <h2>My Notes</h2>
       <div className='right'>
         {notes.map((note) => {
           return <Note key={note._id} note={note} />;
