@@ -18,20 +18,16 @@ body {
   align-items: center;
   padding: 10px;
   color: #232323;
-  background-color: #FBBC05;
+  background-color: #fbbc05;
 }
 
-#nav a{
+#nav a {
   text-decoration: none;
 }
 
-#nav a h1{
+#nav a h1 {
   user-select: none;
   color: #232323;
-}
-
-h2 {
-  padding: 5px;
 }
 
 .btn {
@@ -193,7 +189,7 @@ h2 {
   border: 2px solid #232323;
 }
 
-.note .head{
+.note .head {
   position: relative;
   width: 100%;
   display: flex;
@@ -203,7 +199,7 @@ h2 {
   padding-bottom: 5px;
 }
 
-.note .head h3{
+.note .head h3 {
   position: relative;
   width: 70%;
 }
@@ -285,9 +281,8 @@ h2 {
 
 #signup .container,
 #login .container {
-  height: 75vh;
-  max-width: 400px;
-  width: 400px;
+  height: 500px;
+  width: 430px;
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -299,7 +294,7 @@ h2 {
 }
 
 #login .container {
-  height: 50vh;
+  height: 60vh;
 }
 
 :where(#name, #email, #password, #cpassword) {
@@ -392,13 +387,13 @@ h2 {
   cursor: pointer;
 }
 
-.footer .social a{
+.footer .social a {
   color: #232323;
   font-size: 18px;
   padding: 0px 20px;
 }
 
-#error{
+#error {
   position: relative;
   min-height: 90vh;
   display: flex;
@@ -406,7 +401,7 @@ h2 {
   align-items: center;
 }
 
-.errormsg{
+.errormsg {
   width: 500px;
   max-width: 500px;
   display: flex;
@@ -419,11 +414,11 @@ h2 {
   background-color: whitesmoke;
 }
 
-.errormsg h1{
+.errormsg h1 {
   font-size: 10rem;
 }
 
-.errormsg p{
+.errormsg p {
   text-align: center;
 }
 
@@ -445,7 +440,7 @@ h2 {
   padding-right: 5px;
 }
 
-small{
+small {
   color: red;
 }
 
@@ -469,4 +464,61 @@ button {
 .right::-webkit-scrollbar-thumb,
 .note p::-webkit-scrollbar-thumb {
   background-color: #232323;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .footer {
+    padding: 5px 10rem;
+    font-size: 16px;
+  }
+  #signup .container,
+  #login .container {
+    width: 400px;
+    padding: 15px;
+  }
+  #nav a h1 {
+    font-size: 20px;
+  }
+  #login h2,
+  #signup h2 {
+    font-size: 20px;
+  }
+  #signup .container p,
+  #login .container p {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .footer {
+    flex-direction: column;
+    padding: 5px 1rem;
+    font-weight: 14px;
+  }
+  .footer .social {
+    margin-top: 10px;
+  }
+  #signup .container,
+  #login .container {
+    width: 370px;
+    padding: 20px;
+  }
+  :where(#name, #email, #password, #cpassword) label {
+    font-size: 15px;
+  }
+  #signup .container button,
+  #login .container button {
+    font-size: 16px;
+  }
+  #login h2,
+  #signup h2 {
+    font-size: 18px;
+  }
+  #nav a h1 {
+    font-size: 18px;
+  }
+  #signup .container p,
+  #login .container p {
+    font-size: 14px;
+  }
 }
