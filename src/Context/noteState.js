@@ -2,12 +2,13 @@ import { useState } from "react";
 import NoteContext from "./noteContext";
 
 const NoteState = (props) => {
+    const BASE_URL = "https://googlekeepbackend.onrender.com";
     const notesInitial = [];
     const [notes, setNotes] = useState(notesInitial);
     const [login, setLogin] = useState(localStorage.getItem('token') !== null);
 
     const fetchNotes = async () => {
-        let url = `${import.meta.env.BASE_URL}/api/note/fetchnote`
+        let url = `${BASE_URL}/api/note/fetchnote`
         const response = await fetch(url, {
             method: 'GET',
             headers: {
@@ -26,7 +27,7 @@ const NoteState = (props) => {
         else if (description === "") {
             description = "";
         }
-        let url = `${import.meta.env.BASE_URL}/api/note/addnote`
+        let url = `${BASE_URL}/api/note/addnote`
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -40,7 +41,7 @@ const NoteState = (props) => {
     }
 
     const deleteNote = async (id) => {
-        let url = `${import.meta.env.BASE_URL}/api/note/deletenote/${id}`
+        let url = `${BASE_URL}/api/note/deletenote/${id}`
         await fetch(url, {
             method: 'DELETE',
             headers: {
@@ -55,7 +56,7 @@ const NoteState = (props) => {
     }
 
     const updateNote = async (id, title, description) => {
-        let url = `${import.meta.env.BASE_URL}/api/note/updatenote/${id}`
+        let url = `${BASE_URL}/api/note/updatenote/${id}`
         await fetch(url, {
             method: 'PUT',
             headers: {
@@ -76,7 +77,7 @@ const NoteState = (props) => {
     }
 
     const getUserData = async (password) => {
-        let url = `${import.meta.env.BASE_URL}/api/auth/getuser`
+        let url = `${BASE_URL}/api/auth/getuser`
         const response = await fetch(url, {
             method: 'POST',
             headers: {
