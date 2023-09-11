@@ -22,7 +22,7 @@ const Signup = () => {
 
   async function handleClick(e) {
     e.preventDefault();
-    const url = `https://googlekeepbackend.onrender.com/api/auth/signup`;
+    const url = `${import.meta.env.BASE_URL}/api/auth/signup`;
     const response = await fetch(url, {
       method: 'POST',
       headers: {

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import NoteContext from '../Context/noteContext';
 
 const Login = () => {
-  const url = `$https://googlekeepbackend.onrender.com/api/auth/login`;
+  const url = `${import.meta.env.BASE_URL}/api/auth/login`;
   let Navigate = useNavigate();
   const context = useContext(NoteContext);
   const { setLogin } = context;
