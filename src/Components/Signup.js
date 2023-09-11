@@ -22,7 +22,7 @@ const Signup = () => {
 
   async function handleClick(e) {
     e.preventDefault();
-    const url = `http://localhost:5000/api/auth/signup`;
+    const url = `${process.env.BASE_URL}/api/auth/signup`;
     const response = await fetch(url, {
       method: 'POST',
       headers: {
