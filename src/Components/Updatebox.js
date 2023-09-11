@@ -8,7 +8,6 @@ const Updatebox = (props) => {
 
     function handleClick(e) {
         e.preventDefault();
-        console.log(note);
         updateNote(props.note._id, note.title, note.description);
         props.onUpdate(false);
     }

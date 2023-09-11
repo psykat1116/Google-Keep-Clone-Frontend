@@ -22,7 +22,7 @@ const Notes = () => {
     <div className="box">
       <h2>My Notes</h2>
       <div className='right'>
-        {notes.map((note) => {
+        {notes.length > 0 && notes.map((note) => {
           return <Note key={note._id} note={note} />;
         })}
       </div>
