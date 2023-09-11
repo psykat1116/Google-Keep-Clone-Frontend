@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import NoteContext from '../Context/noteContext';
 
 const Login = () => {
-  const url = `http://localhost:5000/api/auth/login`;
+  const url = `${process.env.BASE_URL}/api/auth/login`;
   let Navigate = useNavigate();
   const context = useContext(NoteContext);
   const { setLogin } = context;
